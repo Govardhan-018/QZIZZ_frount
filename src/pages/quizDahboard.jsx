@@ -72,7 +72,8 @@ function QuizDashboard() {
             .then((data) => {
                 console.log("Quiz closed successfully:", data);
                 localStorage.removeItem("quizCode");
-                navigate("/home");
+                localStorage.setItem("codeQuiz", quizCode);
+                navigate("/qzinfo");
             })
             .catch((err) => {
                 console.error("Close quiz error:", err);
@@ -109,7 +110,10 @@ function QuizDashboard() {
 
                             <p className="text-[#222831] text-center mb-6 leading-relaxed">
                                 To join the quiz, go to the <span className="font-semibold text-[#00ADB5]">home page</span> and
-                                press on <span className="font-semibold text-[#393E46]">Join Quiz</span> button,
+                                press on <span className=" text-[#393E46] cursor-pointer hover:text-[#00ADB5] font-bold " onClick={() => {
+                                    localStorage.setItem("quizCode", quizCode);
+                                    navigate("/quiz");
+                                }}>Join Quiz</span> button,
                                 then enter this code.
                             </p>
 

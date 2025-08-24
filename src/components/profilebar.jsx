@@ -13,7 +13,7 @@ function Profilebar({ user = {} }) {
   const displayName = user?.mail || "User";
   
   return (
-    <div className="absolute top-6 right-6 flex items-center gap-2">
+    <div className="absolute top-6 right-6 flex items-center gap-2 z-70">
       <button
         className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#00ADB5] text-[#EEEEEE] font-semibold shadow hover:bg-[#393E46] transition cursor-pointer"
         onClick={handleProfile}

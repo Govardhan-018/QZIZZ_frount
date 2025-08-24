@@ -201,11 +201,9 @@ function Qzinfo() {
                                 <div className="text-center py-12">
                                     <div className="text-6xl mb-4">🎯</div>
                                     <h4 className="text-xl font-semibold text-[#393E46] mb-2">
-                                        No Completions Yet
+                                        No one Complited
                                     </h4>
-                                    <p className="text-[#222831]">
-                                        Participants are still working on the quiz. Check back later!
-                                    </p>
+            
                                 </div>
                             )}
                         </div>
@@ -213,10 +211,10 @@ function Qzinfo() {
                         {/* Action Buttons */}
                         <div className="flex flex-col md:flex-row gap-4 mt-8 justify-center">
                             <button 
-                                onClick={() => navigate("/quiz-dashboard")}
+                                onClick={() => navigate("/profile")}
                                 className="px-6 py-3 rounded-xl font-semibold transition-colors bg-[#00ADB5] text-[#EEEEEE] hover:bg-[#393E46]"
                             >
-                                Back to Dashboard
+                                Back to Profile
                             </button>
                             <button 
                                 onClick={() => navigate("/home")}

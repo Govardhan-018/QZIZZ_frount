@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Quiz() {
     const [protectedData, setProtectedData] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState("");
     const [quizes, setQuizes] = useState([]);
     const [prquiz, setPrquiz] = useState(1);
@@ -71,38 +72,37 @@ function Quiz() {
     };
 
     // Fix the typo and timing logic in handleSubmit:
-   function handleSubmit() {
-    setError("");
-    const token = localStorage.getItem("token");
-    const qzx = localStorage.getItem("quizCode");
-    const currentEndTime = new Date().toISOString();
+    async function handleSubmit() {
+        setIsSubmitting(true);          // start loader
+        setError("");
+        const token = localStorage.getItem("token");
+        const quizCode = localStorage.getItem("quizCode");
+        const endTime = new Date().toISOString();
 
-    setTiming(prev => ({ ...prev, endTime: currentEndTime }));
+        try {
+            const res = await fetch(import.meta.env.VITE_SUBMIT_ANS_URL, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    answers: ans,
+                    quizCode,
+                    startTime: timing.stTime || new Date().toISOString(),
+                    endTime,
+                }),
+            });
 
-    // Send the ans object directly instead of converting
-    fetch(import.meta.env.VITE_SUBMIT_ANS_URL, {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            answers: ans, // Send ans object directly
-            quizCode: qzx,
-            startTime: timing.stTime || new Date().toISOString(),
-            endTime: currentEndTime,
-        }),
-    })
-        .then((res) => {
             if (!res.ok) throw new Error("Failed to submit answers");
-            return res.json();
-        })
-        .then((data) => {
+            const data = await res.json();
             setScore(data);
-            console.log("Response data:", data);
-        })
-        .catch((err) => setError(err.message));
-}
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setIsSubmitting(false);       // stop loader
+        }
+    }
 
 
     return (
@@ -235,14 +235,14 @@ function Quiz() {
                             )}
 
                             {/* Points */}
-                            <div className="bg-[#00ADB5] text-white p-3 rounded-lg mb-4">
+                            <div className=" text-[#00ADB5] p-3 rounded-lg mb-4">
                                 <h3 className="text-xl font-bold">Points: {score.points}</h3>
                             </div>
 
-                            {/* Time taken if available */}
-                            {score.timeTaken && (
+
+                            {(
                                 <p className="text-sm text-gray-500 mb-4">
-                                    Time taken: {Math.floor(score.timeTaken / 60)}:{(score.timeTaken % 60).toString().padStart(2, '0')}
+                                    To view answer Go to your profile and joined quiz section and check after closing of quiz."Only first attempt will be considered".
                                 </p>
                             )}
                         </div>
@@ -253,9 +253,17 @@ function Quiz() {
                         >
                             Go to Home
                         </button>
+
+
                     </div>
                 </div>
             )}
+            {isSubmitting && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="w-14 h-14 border-4 border-[#00ADB5] border-t-transparent rounded-full animate-spin" />
+                </div>
+            )}
+
 
         </div>
     );

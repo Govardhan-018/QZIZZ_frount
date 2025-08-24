@@ -189,7 +189,7 @@ function Quizanalysis() {
                 {data.resdata && (
                     <div className="w-full max-w-6xl mx-auto px-4">
                         {/* Quiz Results Header */}
-                        <div className="rounded-xl border-2 border-[#393E46] p-8 bg-white mb-8">
+                        <div className="rounded-xl  p-8 bg-white mb-8">
                             <div className="text-center mb-6">
                                 <h2 className="text-3xl font-bold text-[#00ADB5] mb-2">
                                     Quiz Analysis
@@ -254,8 +254,8 @@ function Quizanalysis() {
                                         <div
                                             key={questionId}
                                             className={`rounded-xl border-2 p-6 transition-all ${isCorrect
-                                                    ? 'bg-green-50 border-green-400'
-                                                    : 'bg-red-50 border-red-400'
+                                                ? 'bg-green-50 border-green-400'
+                                                : 'bg-red-50 border-red-400'
                                                 }`}
                                         >
                                             {/* Question Header */}
@@ -264,8 +264,8 @@ function Quizanalysis() {
                                                     Question {questionId}: {question?.question || 'Question not found'}
                                                 </h4>
                                                 <div className={`px-4 py-2 rounded-full font-bold text-sm ${isCorrect
-                                                        ? 'bg-green-500 text-white'
-                                                        : 'bg-red-500 text-white'
+                                                    ? 'bg-green-500 text-white'
+                                                    : 'bg-red-500 text-white'
                                                     }`}>
                                                     {isCorrect ? '✓ Correct' : '✗ Incorrect'}
                                                 </div>
@@ -284,10 +284,10 @@ function Quizanalysis() {
                                                                 <div
                                                                     key={key}
                                                                     className={`p-3 rounded-lg border-2 ${isCorrectOption
-                                                                            ? 'bg-green-100 border-green-400 text-green-800'
-                                                                            : isUserAnswer && !isCorrectOption
-                                                                                ? 'bg-red-100 border-red-400 text-red-800'
-                                                                                : 'bg-white border-gray-200 text-[#222831]'
+                                                                        ? 'bg-green-100 border-green-400 text-green-800'
+                                                                        : isUserAnswer && !isCorrectOption
+                                                                            ? 'bg-red-100 border-red-400 text-red-800'
+                                                                            : 'bg-white border-gray-200 text-[#222831]'
                                                                         }`}
                                                                 >
                                                                     <div className="flex items-center justify-between">
