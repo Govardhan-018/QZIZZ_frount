@@ -18,11 +18,11 @@ function Navbar() {
         {/* Logo/Brand */}
         <div className="flex items-center">
           {/* Mobile: only round initial */}
-          <div className="md:hidden w-10 h-10 rounded-full bg-[#00ADB5] flex items-center justify-center text-white font-bold text-xl border-2 border-[#393E46]">
+          <div className="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-xl border-2">
             {initial}
           </div>
           {/* Desktop: brand name */}
-          <h1 className="hidden md:block text-2xl font-bold text-[#00ADB5]">QZIZZ.learn</h1>
+          <h1 className="hidden md:block text-2xl font-bold text-black">QZIZZ.learn</h1>
         </div>
       </div>
     </nav>
