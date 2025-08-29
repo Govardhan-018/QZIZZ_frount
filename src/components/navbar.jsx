@@ -13,7 +13,7 @@ function Navbar() {
   const initial = mail ? mail[0].toUpperCase() : "Q";
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 bg-black">
+    <nav className="fixed inset-x-0 top-0 z-50 bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo/Brand */}
         <div className="flex items-center">
