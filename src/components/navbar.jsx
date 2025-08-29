@@ -24,8 +24,6 @@ function Navbar() {
           {/* Desktop: brand name */}
           <h1 className="hidden md:block text-2xl font-bold text-[#00ADB5]">QZIZZ.learn</h1>
         </div>
-        {/* Profile bar on right */}
-        <Profilebar />
       </div>
     </nav>
   );
