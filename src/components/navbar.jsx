@@ -1,17 +1,28 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 /**
- * Brand-colored, always-visible navbar pinned to the very top-left.
- *  – fixed:   removes it from normal flow and keeps it on-screen
- *  – inset-0: stretches full width
- *  – bg-white/ shadow: visual separation from page
- *  – z-50: guarantees it stays above the rest of the UI
+ * Modern, responsive navbar.
+ * - On mobile: only shows round initial (from email in localStorage)
+ * - On desktop: shows brand name
+ * - Always pinned to top
  */
 function Navbar() {
+  // Get user email from localStorage for initial
+  const mail = localStorage.getItem("mail") || "";
+  const initial = mail ? mail[0].toUpperCase() : "Q";
+
   return (
-    <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center">
-        <h1 className="text-2xl font-bold text-black">QZIZZ.learn</h1>
+    <nav className="fixed inset-x-0 top-0 z-50 bg-white shadow">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Mobile: only round initial */}
+        <div className="md:hidden flex items-center">
+          <div className="w-10 h-10 rounded-full bg-[#00ADB5] flex items-center justify-center text-white font-bold text-xl border-2 border-[#393E46]">
+            {initial}
+          </div>
+        </div>
+        {/* Desktop: brand name */}
+        <h1 className="hidden md:block text-2xl font-bold text-black">QZIZZ.learn</h1>
       </div>
     </nav>
   );
