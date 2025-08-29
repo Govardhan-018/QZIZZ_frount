@@ -133,7 +133,7 @@ function Quizanalysis() {
 
     if (loading) {
         return (
-            <div className="min-h-screen">
+            <div className="min-h-screen bg-white">
                 <Navbar />
                 <div className="pt-24 flex items-center justify-center min-h-[50vh]">
                     <div className="text-center">
