@@ -69,6 +69,7 @@ function Login() {
         const expiry = Date.now() + 60 * 60 * 1000;
         localStorage.setItem("token", data.token);
         localStorage.setItem("token_expiry", expiry);
+        localStorage.setItem("mail", email);
         navigate("/home");
       } else {
         setFormError("Signup failed. Please try again."); // << NO alert

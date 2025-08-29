@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Profilebar() {
+function Profilebar({ user = {} }) {
   const navigate = useNavigate();
-  const mail = localStorage.getItem("mail") || "";
-  const userInitial = mail ? mail[0].toUpperCase() : "U";
-  const displayName = mail || "User";
+  const userInitial = user?.mail ? user.mail[0]?.toUpperCase() : "U";
+  const displayName = user?.mail || "User";
 
   return (
     <div className="absolute top-3 right-6 flex items-center gap-2 z-70">
