@@ -8,9 +8,7 @@ import Profilebar from "./profilebar";
  * - Always pinned to top
  */
 function Navbar() {
-  // Get user email from localStorage for initial
-  const mail = localStorage.getItem("mail") || "";
-  const initial = mail ? mail[0].toUpperCase() : "Q";
+  const initial = "Qzizz";
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 bg-white">
