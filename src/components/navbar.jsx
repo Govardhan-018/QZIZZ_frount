@@ -13,11 +13,11 @@ function Navbar() {
   const initial = mail ? mail[0].toUpperCase() : "Q";
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 bg-white shadow">
+    <nav className="fixed inset-x-0 top-0 z-50 bg-white">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Mobile: only round initial */}
         <div className="md:hidden flex items-center">
-          <div className="w-10 h-10 rounded-full bg-[#00ADB5] flex items-center justify-center text-white font-bold text-xl border-2 border-[#393E46]">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-xl border-2">
             {initial}
           </div>
         </div>
